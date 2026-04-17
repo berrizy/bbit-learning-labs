@@ -19,7 +19,7 @@ class mqConsumer(mqConsumerInterface):
         self.m_connection = pika.BlockingConnection(parameters=con_params)
 
         # Establish Channel
-        self.m_hannel = self.connection.channel()
+        self.m_channel = self.m_connection.channel()
 
         # Create Queue if not already present
         self.m_channel.queue_declare(queue=self.m_queue_name) 
@@ -28,7 +28,7 @@ class mqConsumer(mqConsumerInterface):
         self.m_channel.exchange_declare(self.m_exchange_name)
 
         # Bind Binding Key to Queue on the exchange
-        self.m_channel.m_queue_bind(
+        self.m_channel.queue_bind(
             queue= self.m_queue_name,
             routing_key= self.m_binding_key,
             exchange= self.m_exchange_name,
@@ -52,7 +52,6 @@ class mqConsumer(mqConsumerInterface):
         # Print " [*] Waiting for messages. To exit press CTRL+C"
         print(" [*] Waiting for messages. To exit press CTRL+C")
         # Start consuming messages
-        pass
     
     def __del__(self) -> None:
         # Print "Closing RMQ connection on destruction"
