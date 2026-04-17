@@ -52,6 +52,7 @@ class mqConsumer(mqConsumerInterface):
         # Print " [*] Waiting for messages. To exit press CTRL+C"
         print(" [*] Waiting for messages. To exit press CTRL+C")
         # Start consuming messages
+        self.m_channel.start_consuming()
     
     def __del__(self) -> None:
         # Print "Closing RMQ connection on destruction"
