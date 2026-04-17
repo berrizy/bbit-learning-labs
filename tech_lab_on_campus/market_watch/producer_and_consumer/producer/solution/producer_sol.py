@@ -1,5 +1,3 @@
-
-import pika 
 from producer_interface import mqProducerInterface
 
 class mqProducer(mqProducerInterface):
