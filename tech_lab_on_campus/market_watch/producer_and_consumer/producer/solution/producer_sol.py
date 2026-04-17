@@ -1,3 +1,4 @@
+import os
 import pika
 from producer_interface import mqProducerInterface
 
@@ -17,7 +18,7 @@ class mqProducer(mqProducerInterface):
     self.channel.exchange_declare(self.exchange_name)
   
   def publishOrder(self, message: str) -> None:
-    self.basic_publish(
+    self.channel.basic_publish(
       exchange=self.exchange_name,
       routing_key=self.routing_key,
       body=message,
