@@ -26,5 +26,5 @@ class mqProducer(mqProducerInterface):
     
     print("[x] Sent")
 
-    channel.close()
-    connection.close()
+    self.channel.close()
+    self.connection.close()
