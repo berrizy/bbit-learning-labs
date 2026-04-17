@@ -1,5 +1,6 @@
 
-import pika from consumerInterface import mqConsumerInterface 
+import pika 
+from consumerInterface import mqConsumerInterface 
 
 class mqConsumer(mqConsumerInterface):
     def __init__(self, binding_key: str, exchange_name: str, queue_name: str) -> None:
@@ -30,7 +31,7 @@ class mqConsumer(mqConsumerInterface):
         self.channel.m_queue_bind(
             queue= self.m_queue_name,
             routing_key= self.m_binding_key,
-            exchange= self.m_exchange_name",
+            exchange= self.m_exchange_name,
         )
 
         # Set-up Callback function for receiving messages
